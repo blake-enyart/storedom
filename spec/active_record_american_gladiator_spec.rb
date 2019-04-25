@@ -138,6 +138,11 @@ describe "ActiveRecord American Gladiator" do
       Order.create(items: [lights, lights, lights])
 
       # Changeable Start
+      most_popular_items = Item.joins(:orders)
+                               .select("items.*, COUNT(items.name) AS name_count")
+                               .group('items.id')
+                               .order('name_count DESC')
+                               .limit(2)
       # items_with_count = Hash.new(0)
       #
       # Order.all.each do |order|
