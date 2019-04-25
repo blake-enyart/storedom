@@ -22,7 +22,7 @@ describe "ActiveRecord American Gladiator" do
       Item.create(name: "Trap Door")
 
       # Changeable Start
-      items = Item.all.where('items.name LIKE "Powerball%"')
+      items = Item.where('items.name LIKE "%Powerball%"')
       # Changeable End
 
       expect(items.count).to eq(2)
